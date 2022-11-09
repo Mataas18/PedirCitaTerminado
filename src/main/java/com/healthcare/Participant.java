@@ -37,7 +37,7 @@ public class Participant implements java.io.Serializable {
 		this.type = type;
 		this.actor = actor;
 	}
-	String toString(){
+	public String toString(){
 	    return this.actor;
 	}
 
