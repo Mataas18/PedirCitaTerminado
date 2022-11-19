@@ -10,7 +10,7 @@ public class Appointment implements java.io.Serializable {
 
 	@javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "APPOINTMENT_ID_GENERATOR")
 	@javax.persistence.Id
-	@javax.persistence.SequenceGenerator(name = "APPOINTMENT_ID_GENERATOR", sequenceName = "APPOINTMENT_ID_SEQ")
+	@javax.persistence.SequenceGenerator(sequenceName = "APPOINTMENT_ID_SEQ", name = "APPOINTMENT_ID_GENERATOR")
 	private java.lang.Long id;
 
 	@org.kie.api.definition.type.Label("código del estado")
@@ -29,7 +29,7 @@ public class Appointment implements java.io.Serializable {
 	private Participant medico;
 
 	@org.kie.api.definition.type.Label("paciente para el que se solicita")
-	private String paciente;
+	private Participant paciente;
 
 	public Appointment() {
 	}
@@ -74,14 +74,6 @@ public class Appointment implements java.io.Serializable {
 		this.comment = comment;
 	}
 
-	public java.lang.String getPaciente() {
-		return this.paciente;
-	}
-
-	public void setPaciente(java.lang.String paciente) {
-		this.paciente = paciente;
-	}
-
 	public com.healthcare.Participant getMedico() {
 		return this.medico;
 	}
@@ -90,10 +82,18 @@ public class Appointment implements java.io.Serializable {
 		this.medico = medico;
 	}
 
+	public com.healthcare.Participant getPaciente() {
+		return this.paciente;
+	}
+
+	public void setPaciente(com.healthcare.Participant paciente) {
+		this.paciente = paciente;
+	}
+
 	public Appointment(java.lang.Long id, java.lang.String status,
 			java.lang.String description, java.util.Date start,
 			java.lang.String comment, com.healthcare.Participant medico,
-			java.lang.String paciente) {
+			com.healthcare.Participant paciente) {
 		this.id = id;
 		this.status = status;
 		this.description = description;
